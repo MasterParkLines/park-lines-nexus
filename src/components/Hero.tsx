@@ -73,7 +73,7 @@ const Hero = () => {
             
             <Button 
               variant="outline" 
-              className="border-white/20 text-white hover:bg-white/10 w-full sm:w-auto"
+              className="border-white/20 text-gray-800 bg-white hover:bg-white/90 w-full sm:w-auto"
               onClick={() => window.location.href = "#services"}
             >
               Explore Services
