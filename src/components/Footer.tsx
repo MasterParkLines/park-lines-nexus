@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,9 +14,6 @@ const Footer = () => {
               Transforming businesses through expert agency support, coaching, and cutting-edge solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
