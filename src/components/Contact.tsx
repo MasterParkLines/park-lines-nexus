@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, Mail, ArrowRight } from 'lucide-react';
@@ -87,7 +86,7 @@ Message: ${formData.message}
       `;
       
       // Use mailto link for email sending
-      const mailtoLink = `mailto:parklinesconcepts@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      const mailtoLink = `mailto:info@parklinesconcepts.autos?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
       
       // Open the email client
       window.open(mailtoLink, '_blank');
@@ -137,8 +136,8 @@ Message: ${formData.message}
             <div className="space-y-4 mt-8">
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-park-purple mr-3" />
-                <a href="mailto:parklinesconcepts@gmail.com" className="hover:text-primary transition-colors">
-                  parklinesconcepts@gmail.com
+                <a href="mailto:info@parklinesconcepts.autos" className="hover:text-primary transition-colors">
+                  info@parklinesconcepts.autos
                 </a>
               </div>
             </div>

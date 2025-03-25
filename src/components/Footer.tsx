@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Mail, Twitter, Instagram, Linkedin } from 'lucide-react';
 
@@ -92,7 +93,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-park-purple mr-3 mt-0.5" />
-                <span className="text-gray-400">parklinesconcepts@gmail.com</span>
+                <span className="text-gray-400">info@parklinesconcepts.autos</span>
               </li>
             </ul>
           </div>
