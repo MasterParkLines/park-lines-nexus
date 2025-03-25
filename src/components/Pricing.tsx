@@ -43,48 +43,50 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: "Project-Based",
-      description: "Perfect for specific, one-time projects with clear deliverables.",
-      price: "Custom Pricing",
+      name: "Single Service",
+      description: "Perfect for businesses looking to automate one core area of their operations.",
+      price: "$777",
+      period: "per month",
       features: [
-        "Detailed project scoping",
-        "Fixed or milestone-based payments",
-        "Regular progress updates",
-        "Dedicated project manager",
-        "Post-project support"
+        "Full access to one core service",
+        "Detailed onboarding process",
+        "24/7 monitoring and alerts",
+        "Monthly performance reports",
+        "Dedicated account manager"
       ],
-      buttonText: "Schedule Consultation",
+      buttonText: "Get Started",
       isPopular: false
     },
     {
-      name: "Retainer",
-      description: "Ongoing support and services for continuous business growth.",
-      price: "$2,500",
+      name: "Triple Automation",
+      description: "Our most popular package for businesses looking to integrate multiple automation services.",
+      price: "$2,099.10",
       period: "per month",
       features: [
-        "Monthly service allowance",
-        "Priority support",
-        "Regular strategy sessions",
-        "Performance reporting",
+        "Full access to three core services",
+        "10% discount on package price",
+        "Priority support and implementation",
+        "Weekly performance reports",
         "Dedicated account manager",
-        "Flexible service allocation"
+        "Quarterly strategy sessions"
       ],
       buttonText: "Get Started",
       isPopular: true
     },
     {
-      name: "Coaching",
-      description: "One-on-one guidance to help you develop skills and grow your business.",
-      price: "$500",
-      period: "per session",
+      name: "Full Automation",
+      description: "The complete solution for businesses ready to fully leverage AI-driven automation.",
+      price: "$2,917.50",
+      period: "per month",
       features: [
-        "90-minute coaching sessions",
-        "Personalized action plans",
-        "Email support between sessions",
-        "Resource recommendations",
-        "Progress tracking"
+        "All five core automation services",
+        "25% discount on package price",
+        "VIP support with 2-hour response time",
+        "Bi-weekly performance reports",
+        "Dedicated senior account manager",
+        "Monthly strategy and optimization sessions"
       ],
-      buttonText: "Book Coaching",
+      buttonText: "Get Started",
       isPopular: false
     }
   ];
@@ -97,9 +99,9 @@ const Pricing = () => {
           className="max-w-3xl mx-auto text-center mb-12 opacity-0 translate-y-10 transition-all duration-700"
         >
           <p className="caption text-park-purple">Pricing</p>
-          <h2 className="heading-lg mb-4">Transparent, Value-Based Pricing</h2>
+          <h2 className="heading-lg mb-4">Stack Your Automation & Save</h2>
           <p className="subtitle">
-            Choose the engagement model that works best for your business needs and budget.
+            Choose the automation package that works best for your business needs and scale efficiently with our bundled services.
           </p>
         </div>
         

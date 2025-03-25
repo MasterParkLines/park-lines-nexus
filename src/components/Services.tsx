@@ -1,39 +1,75 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Zap, Lightbulb, Code, PenTool, BarChart, CheckCircle } from 'lucide-react';
+import { 
+  BarChart, 
+  Target, 
+  Share2, 
+  ShoppingCart, 
+  ListChecks 
+} from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 const services = [
   {
-    icon: <Lightbulb className="h-10 w-10 text-park-purple" />,
-    title: "Agency Support",
-    description: "Full-service agency support for your business including strategy, execution, and growth.",
-    features: ["Business strategy consulting", "Team management", "Marketing campaigns"]
-  },
-  {
-    icon: <PenTool className="h-10 w-10 text-park-purple" />,
-    title: "Coaching",
-    description: "One-on-one coaching to help you level up your skills and grow your business.",
-    features: ["Personal skill development", "Business growth planning", "Accountability systems"]
-  },
-  {
     icon: <BarChart className="h-10 w-10 text-park-purple" />,
-    title: "Course Creation",
-    description: "End-to-end course creation from ideation to launch and marketing.",
-    features: ["Content strategy", "Course production", "Launch campaigns"]
+    title: "Data Analysis & Insights",
+    description: "For eCommerce Sellers Managing Multiple Platforms",
+    features: [
+      "Centralized dashboards for key performance metrics",
+      "AI-driven insights on sales, inventory, and customer trends",
+      "Multi-platform sales tracking and reporting (Amazon, Shopify, Walmart, etc.)",
+      "Custom alerts for inventory levels, sales fluctuations, and ad performance"
+    ],
+    price: "$777/month"
   },
   {
-    icon: <Code className="h-10 w-10 text-park-purple" />,
-    title: "Web Development",
-    description: "Custom websites and web applications designed for conversion and growth.",
-    features: ["Custom website design", "E-commerce solutions", "Membership platforms"]
+    icon: <Target className="h-10 w-10 text-park-purple" />,
+    title: "PPC & Ad Automation",
+    description: "For Amazon, Google, and Social Ads",
+    features: [
+      "AI-powered ad optimization to maximize ROI",
+      "Automated bid adjustments based on real-time performance",
+      "Ad copy and creative testing using AI insights",
+      "Custom strategies for scaling ad spend efficiently"
+    ],
+    price: "$777/month"
   },
   {
-    icon: <Zap className="h-10 w-10 text-park-purple" />,
-    title: "AI Automation",
-    description: "Cutting-edge AI tools to automate your workflows and scale your business.",
-    features: ["Custom AI solutions", "Workflow automation", "Data analysis"]
+    icon: <Share2 className="h-10 w-10 text-park-purple" />,
+    title: "Social Content & Posting",
+    description: "For Streamlined Social Media Management",
+    features: [
+      "AI-assisted content creation (text, images, video)",
+      "Auto-scheduling and cross-posting to all major platforms",
+      "Performance tracking and engagement analysis",
+      "AI-driven recommendations for best posting times and content strategy"
+    ],
+    price: "$777/month"
+  },
+  {
+    icon: <ShoppingCart className="h-10 w-10 text-park-purple" />,
+    title: "E-Commerce Operations Automation",
+    description: "For Multi-Channel Inventory & Process Optimization",
+    features: [
+      "Automated inventory tracking across multiple platforms",
+      "AI-powered demand forecasting to prevent stockouts and overstock",
+      "Streamlined order fulfillment and shipping automation",
+      "AI-driven customer service chatbot integration"
+    ],
+    price: "$777/month"
+  },
+  {
+    icon: <ListChecks className="h-10 w-10 text-park-purple" />,
+    title: "Task & Workflow Automation",
+    description: "For Small Business Owners Seeking Efficiency",
+    features: [
+      "AI-powered review of current business processes",
+      "Automated task management and delegation systems",
+      "Implementation of AI-driven CRM and customer support tools",
+      "Recommendations for optimized workflows using AI tools"
+    ],
+    price: "$777/month"
   }
 ];
 
@@ -83,9 +119,9 @@ const ServicesSection = () => {
           className="max-w-3xl mx-auto text-center mb-12 opacity-0 translate-y-10 transition-all duration-700"
         >
           <p className="caption text-park-purple">Services</p>
-          <h2 className="heading-lg mb-4">Comprehensive Solutions For Your Business</h2>
+          <h2 className="heading-lg mb-4">Our 5 Core Services</h2>
           <p className="subtitle">
-            We provide a full suite of services to help you grow your business, from strategy to execution and everything in between.
+            We specialize in AI-driven automation solutions that simplify and optimize business operations. Whether you're an eCommerce seller, a small business owner, or a digital entrepreneur, our services help you scale efficiently with data-driven insights and automated systems.
           </p>
         </div>
         
@@ -106,18 +142,44 @@ const ServicesSection = () => {
                   {service.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
                 <ul className="space-y-2">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
-                      <CheckCircle className="h-4 w-4 text-park-purple mr-2 flex-shrink-0" />
+                    <li key={i} className="flex items-start">
+                      <span className="text-park-purple mr-2 font-bold">•</span>
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
+                <div className="pt-4 border-t border-border/40">
+                  <p className="text-xl font-bold text-park-purple">{service.price}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="mt-16 p-8 bg-gray-50 dark:bg-park-dark-blue rounded-lg border border-border/40 max-w-3xl mx-auto opacity-0 translate-y-10 transition-all duration-700" ref={(el) => cardsRef.current[5] = el}>
+          <h3 className="text-2xl font-bold text-center mb-4">Stack Your Savings!</h3>
+          <p className="text-center mb-6">The more you automate, the more you save!</p>
+          <ul className="space-y-3">
+            <li className="flex items-center">
+              <span className="text-park-purple mr-2 font-bold">•</span>
+              <span>2 services → 5% off ($1,475.15/month)</span>
+            </li>
+            <li className="flex items-center">
+              <span className="text-park-purple mr-2 font-bold">•</span>
+              <span>3 services → 10% off ($2,099.10/month)</span>
+            </li>
+            <li className="flex items-center">
+              <span className="text-park-purple mr-2 font-bold">•</span>
+              <span>4 services → 17% off ($2,577.45/month)</span>
+            </li>
+            <li className="flex items-center">
+              <span className="text-park-purple mr-2 font-bold">•</span>
+              <span>All 5 services → 25% off ($2,917.50/month)</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
