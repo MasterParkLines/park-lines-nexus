@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -78,10 +78,6 @@ const Footer = () => {
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-park-purple mr-3 mt-0.5" />
                 <span className="text-gray-400">parklinesconcepts@gmail.com</span>
-              </li>
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-park-purple mr-3 mt-0.5" />
-                <span className="text-gray-400">123 Business Avenue, Enterprise City, CA 90210</span>
               </li>
             </ul>
           </div>
