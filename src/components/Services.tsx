@@ -130,7 +130,7 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section id="services" className="section-padding bg-white dark:bg-park-midnight relative">
+    <section id="services" className="section-padding bg-white/50 dark:bg-park-midnight/50 backdrop-blur-sm relative">
       <div className="container-custom">
         <div 
           ref={sectionRef}
@@ -214,8 +214,9 @@ const ServicesSection = () => {
         </div>
       </div>
 
-      {/* Add CSS for the stacking papers animation */}
-      <style jsx>{`
+      {/* Add CSS for the stacking papers animation using a style element instead of JSX */}
+      <style>
+        {`
         .stacking-paper {
           transform-origin: center bottom;
           bottom: -100px;
@@ -233,7 +234,8 @@ const ServicesSection = () => {
         .stacking-paper.stacked:nth-child(4) {
           bottom: 10px;
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };

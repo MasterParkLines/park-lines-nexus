@@ -49,7 +49,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-park-midnight min-h-screen">
+    <div className="bg-gradient-fade min-h-screen">
       <Navbar />
       <main>
         <Hero />
