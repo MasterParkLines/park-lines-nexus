@@ -117,21 +117,23 @@
   
   .bg-gradient-fade {
     background: linear-gradient(to bottom, 
-      #ffffff 0%, 
-      rgba(249, 250, 251, 0.9) 30%,
-      rgba(240, 243, 250, 0.8) 60%,
-      rgba(226, 232, 240, 0.7) 80%,
-      rgba(203, 213, 225, 0.6) 100%
+      #eeedf2 0%, 
+      rgba(233, 231, 244, 0.95) 20%,
+      rgba(215, 210, 235, 0.9) 40%,
+      rgba(192, 185, 220, 0.85) 60%,
+      rgba(170, 160, 210, 0.8) 80%,
+      rgba(150, 140, 195, 0.75) 100%
     );
   }
   
   .dark .bg-gradient-fade {
     background: linear-gradient(to bottom,
       #0A0A14 0%,
-      #0A0A20 30%,
-      #0A1029 60%,
-      #17063B 80%,
-      #2D0A57 100%
+      #12112a 20%,
+      #1a173f 40%,
+      #231e54 60%,
+      #2d246a 80%,
+      #361f80 100%
     );
   }
 }

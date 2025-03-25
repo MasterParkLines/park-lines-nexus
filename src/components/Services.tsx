@@ -130,7 +130,7 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section id="services" className="section-padding bg-white/50 dark:bg-park-midnight/50 backdrop-blur-sm relative">
+    <section id="services" className="section-padding bg-white/30 dark:bg-park-midnight/70 backdrop-blur-sm relative">
       <div className="container-custom">
         <div 
           ref={sectionRef}
