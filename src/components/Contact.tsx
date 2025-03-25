@@ -20,6 +20,7 @@ const Contact = () => {
     phone: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -51,14 +52,65 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Booking request submitted!",
-      description: "We'll be in touch shortly to confirm your appointment.",
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    setDate(undefined);
+    
+    if (!date) {
+      toast({
+        title: "Date required",
+        description: "Please select your preferred date for the call.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Missing information",
+        description: "Please fill in all required fields.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Format the data for the email
+      const formattedDate = date ? format(date, "PPP") : "No date selected";
+      const emailSubject = `New Strategy Call Request from ${formData.name}`;
+      const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Preferred Date: ${formattedDate}
+Message: ${formData.message}
+      `;
+      
+      // Use mailto link for email sending
+      const mailtoLink = `mailto:parklinesconcepts@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open the email client
+      window.open(mailtoLink, '_blank');
+      
+      // Show success toast
+      toast({
+        title: "Booking request submitted!",
+        description: "Please complete sending the email in your email client.",
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setDate(undefined);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly via email.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,7 +167,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
+                  <Label htmlFor="name">Name <span className="text-red-500">*</span></Label>
                   <Input 
                     id="name" 
                     name="name" 
@@ -126,7 +178,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
                   <Input 
                     id="email" 
                     name="email" 
@@ -140,7 +192,7 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <Label>Preferred Date</Label>
+                <Label>Preferred Date <span className="text-red-500">*</span></Label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
@@ -164,22 +216,24 @@ const Contact = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message">Message <span className="text-red-500">*</span></Label>
                 <Textarea 
                   id="message" 
                   name="message" 
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell us about your business and what you're looking to achieve" 
-                  rows={4} 
+                  rows={4}
+                  required
                 />
               </div>
               
               <Button 
                 type="submit" 
                 className="w-full bg-park-purple hover:bg-park-light-purple text-white group"
+                disabled={isSubmitting}
               >
-                Book Your Call
+                {isSubmitting ? "Sending..." : "Book Your Call"}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </form>
