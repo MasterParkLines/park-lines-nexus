@@ -76,6 +76,7 @@ const services = [
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const stackingPapersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,6 +85,16 @@ const ServicesSection = () => {
           if (entry.isIntersecting) {
             entry.target.classList.add('opacity-100');
             entry.target.classList.remove('opacity-0', 'translate-y-10');
+
+            // If the stacking papers section becomes visible, start the animation
+            if (entry.target === stackingPapersRef.current) {
+              const papers = entry.target.querySelectorAll('.stacking-paper');
+              papers.forEach((paper, index) => {
+                setTimeout(() => {
+                  paper.classList.add('stacked');
+                }, index * 300);
+              });
+            }
           }
         });
       },
@@ -101,6 +112,10 @@ const ServicesSection = () => {
       if (card) observer.observe(card);
     });
 
+    if (stackingPapersRef.current) {
+      observer.observe(stackingPapersRef.current);
+    }
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
@@ -108,6 +123,9 @@ const ServicesSection = () => {
       cardsRef.current.forEach((card) => {
         if (card) observer.unobserve(card);
       });
+      if (stackingPapersRef.current) {
+        observer.unobserve(stackingPapersRef.current);
+      }
     };
   }, []);
 
@@ -159,29 +177,63 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="mt-16 p-8 bg-gray-50 dark:bg-park-dark-blue rounded-lg border border-border/40 max-w-3xl mx-auto opacity-0 translate-y-10 transition-all duration-700" ref={(el) => cardsRef.current[5] = el}>
-          <h3 className="text-2xl font-bold text-center mb-4">Stack Your Savings!</h3>
-          <p className="text-center mb-6">The more you automate, the more you save!</p>
-          <ul className="space-y-3">
-            <li className="flex items-center">
-              <span className="text-park-purple mr-2 font-bold">•</span>
-              <span>2 services → 5% off ($1,475.15/month)</span>
-            </li>
-            <li className="flex items-center">
-              <span className="text-park-purple mr-2 font-bold">•</span>
-              <span>3 services → 10% off ($2,099.10/month)</span>
-            </li>
-            <li className="flex items-center">
-              <span className="text-park-purple mr-2 font-bold">•</span>
-              <span>4 services → 17% off ($2,577.45/month)</span>
-            </li>
-            <li className="flex items-center">
-              <span className="text-park-purple mr-2 font-bold">•</span>
-              <span>All 5 services → 25% off ($2,917.50/month)</span>
-            </li>
-          </ul>
+        <div 
+          ref={(el) => stackingPapersRef.current = el}
+          className="mt-16 p-8 bg-gray-50 dark:bg-park-dark-blue rounded-lg border border-border/40 max-w-3xl mx-auto opacity-0 translate-y-10 transition-all duration-700 relative overflow-hidden"
+        >
+          {/* Stacking Papers Animation */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="stacking-paper bg-white dark:bg-park-dark-blue/80 border border-gray-200 dark:border-gray-700 rounded shadow-sm w-40 h-32 absolute bottom-0 left-0 right-0 mx-auto transform -rotate-12 transition-all duration-500 opacity-70"></div>
+            <div className="stacking-paper bg-white dark:bg-park-dark-blue/80 border border-gray-200 dark:border-gray-700 rounded shadow-sm w-40 h-32 absolute bottom-1 left-0 right-0 mx-auto transform rotate-6 transition-all duration-500 opacity-70"></div>
+            <div className="stacking-paper bg-white dark:bg-park-dark-blue/80 border border-gray-200 dark:border-gray-700 rounded shadow-sm w-40 h-32 absolute bottom-2 left-0 right-0 mx-auto transform -rotate-3 transition-all duration-500 opacity-70"></div>
+            <div className="stacking-paper bg-white dark:bg-park-dark-blue/80 border border-gray-200 dark:border-gray-700 rounded shadow-sm w-40 h-32 absolute bottom-3 left-0 right-0 mx-auto transform rotate-1 transition-all duration-500 opacity-70"></div>
+          </div>
+          
+          <div className="relative z-10 text-center">
+            <h3 className="text-2xl font-bold mb-4">Stack Your Savings!</h3>
+            <p className="text-center mb-6">The more you automate, the more you save!</p>
+            <ul className="space-y-3 mx-auto max-w-md">
+              <li className="flex items-center justify-center">
+                <span className="text-park-purple mr-2 font-bold">•</span>
+                <span>2 services → 5% off ($1,475.15/month)</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <span className="text-park-purple mr-2 font-bold">•</span>
+                <span>3 services → 10% off ($2,099.10/month)</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <span className="text-park-purple mr-2 font-bold">•</span>
+                <span>4 services → 17% off ($2,577.45/month)</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <span className="text-park-purple mr-2 font-bold">•</span>
+                <span>All 5 services → 25% off ($2,917.50/month)</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      {/* Add CSS for the stacking papers animation */}
+      <style jsx>{`
+        .stacking-paper {
+          transform-origin: center bottom;
+          bottom: -100px;
+          transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .stacking-paper.stacked:nth-child(1) {
+          bottom: 40px;
+        }
+        .stacking-paper.stacked:nth-child(2) {
+          bottom: 30px;
+        }
+        .stacking-paper.stacked:nth-child(3) {
+          bottom: 20px;
+        }
+        .stacking-paper.stacked:nth-child(4) {
+          bottom: 10px;
+        }
+      `}</style>
     </section>
   );
 };
