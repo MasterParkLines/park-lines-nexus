@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Mail, Phone, ArrowRight } from 'lucide-react';
+import { Calendar, Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -85,14 +85,8 @@ const Contact = () => {
             <div className="space-y-4 mt-8">
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-park-purple mr-3" />
-                <a href="mailto:contact@parklinesnexxus.com" className="hover:text-primary transition-colors">
-                  contact@parklinesnexxus.com
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-park-purple mr-3" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors">
-                  +1 (234) 567-890
+                <a href="mailto:parklinesconcepts@gmail.com" className="hover:text-primary transition-colors">
+                  parklinesconcepts@gmail.com
                 </a>
               </div>
             </div>
@@ -145,40 +139,28 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
-                  <Input 
-                    id="phone" 
-                    name="phone" 
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Your phone number" 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>Preferred Date</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="w-full justify-start text-left font-normal"
-                      >
-                        <Calendar className="mr-2 h-4 w-4" />
-                        {date ? format(date, "PPP") : <span>Select a date</span>}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <CalendarComponent
-                        mode="single"
-                        selected={date}
-                        onSelect={setDate}
-                        initialFocus
-                        className={cn("p-3 pointer-events-auto")}
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
+              <div className="space-y-2">
+                <Label>Preferred Date</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start text-left font-normal"
+                    >
+                      <Calendar className="mr-2 h-4 w-4" />
+                      {date ? format(date, "PPP") : <span>Select a date</span>}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <CalendarComponent
+                      mode="single"
+                      selected={date}
+                      onSelect={setDate}
+                      initialFocus
+                      className={cn("p-3 pointer-events-auto")}
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
               
               <div className="space-y-2">
